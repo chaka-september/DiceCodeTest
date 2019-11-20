@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tool="http://schemas.android.com/tools">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tagListRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tool:listitem="@layout/item_tag"
+        android:scrollbars="vertical" />
+
+    <ProgressBar
+        android:id="@+id/tagListProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:indeterminate="true"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
