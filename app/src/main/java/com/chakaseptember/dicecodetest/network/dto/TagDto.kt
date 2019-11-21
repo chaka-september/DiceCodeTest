@@ -1,9 +1,12 @@
 package com.chakaseptember.dicecodetest.network.dto
 
+import com.squareup.moshi.Json
+
 data class TagDto(
     val count: Int,
     val total: Int,
-    val _embedded: TagsDto,
+    @field:Json(name = "_embedded")
+    val tagDetailsList: TagsDto,
     val _links: LinkDto
 )
 
@@ -17,7 +20,8 @@ data class TagDetailsDto(
     val quote_id: String,
     val tags: List<String>,
     val value: String,
-    val _embedded: MoreTagDetailsDto
+    @field:Json(name = "_embedded")
+    val moreTagDetails: MoreTagDetailsDto
 )
 
 data class MoreTagDetailsDto(

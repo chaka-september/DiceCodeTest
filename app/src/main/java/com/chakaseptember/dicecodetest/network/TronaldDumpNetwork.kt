@@ -34,20 +34,20 @@ object TronaldDumpNetwork{
 
     fun getTags():Single<TagListModel> {
         return tronaldDumpEndPoint.getTags()
-            .map { tagListDto: TagListDto -> TagListModel(tagListDto._embedded)   }
+            .map { tagListDto: TagListDto -> TagListModel(tagListDto.tags)   }
     }
 
     fun getTag(tag:String): Single<TagsModel> {
         return tronaldDumpEndPoint.getTag(tag)
             .map { tagDto: TagDto ->
                 val tags = mutableListOf<TagModel>()
-                for (tagDetails: TagDetailsDto in tagDto._embedded.tags){
+                for (tagDetails: TagDetailsDto in tagDto.tagDetailsList.tags){
                     val authors = StringBuilder()
-                    for(author:AuthorDto in tagDetails._embedded.author){
+                    for(author:AuthorDto in tagDetails.moreTagDetails.author){
                         authors.appendln(author.name)
                     }
                     val sources = StringBuilder()
-                    for(source:SourceDto in tagDetails._embedded.source){
+                    for(source:SourceDto in tagDetails.moreTagDetails.source){
                         sources.appendln(source.url)
                     }
                     tags.add(TagModel(tagDetails.value,
