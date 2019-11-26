@@ -1,5 +1,6 @@
 package com.chakaseptember.dicecodetest.network
 
+import com.chakaseptember.dicecodetest.model.Tag
 import com.chakaseptember.dicecodetest.model.TagListModel
 import com.chakaseptember.dicecodetest.model.TagModel
 import com.chakaseptember.dicecodetest.model.TagsModel
@@ -34,7 +35,13 @@ object TronaldDumpNetwork{
 
     fun getTags():Single<TagListModel> {
         return tronaldDumpEndPoint.getTags()
-            .map { tagListDto: TagListDto -> TagListModel(tagListDto.tags)   }
+            .map { tagListDto: TagListDto ->
+                val tags = mutableListOf<Tag>()
+                for(string:String in tagListDto.tags){
+                    tags.add(Tag(string))
+                }
+                TagListModel(tags)
+            }
     }
 
     fun getTag(tag:String): Single<TagsModel> {

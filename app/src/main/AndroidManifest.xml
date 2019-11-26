@@ -12,9 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.TagDetailsActivity"
+            android:name=".ui.tagdetails.TagDetailsActivity"
             android:label="@string/title_activity_tag_details"/>
-        <activity android:name=".ui.TagListActivity">
+        <activity android:name=".ui.taglist.TagListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
